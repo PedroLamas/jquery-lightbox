@@ -640,6 +640,7 @@
 					$el.data('lastclick-clicks',0);
 					// Fire Event
 					event.type = 'lastclick';
+					event.isPropagationStopped = function() { return false };
 					$.event.handle.apply(Me, [event,clicks])
 				},300);
 				// Store Timeout
