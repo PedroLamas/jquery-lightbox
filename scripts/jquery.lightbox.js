@@ -723,7 +723,7 @@
 			// Get obj
 			var obj = $(this);
 			// Get rel
-			// var rel = $(obj).attr('rel');
+			// var rel = $(obj).prop('rel');
 			// Init group
 			if ( !$.Lightbox.init(0, $group) )
 			{	return this;	}
@@ -914,7 +914,7 @@
 				{	// We found ourself
 					
 					// Grab the script src
-					this.src = $script.attr('src');
+					this.src = $script.prop('src');
 					
 					// The baseurl is the src up until the start of our js file
 					this.baseurl = this.src.substring(0, this.src.indexOf(this.files.scripts.lightbox));
@@ -943,10 +943,10 @@
 					if ( obj.tagName ) {
 						// We are an element
 						obj = $(obj);
-						if ( obj.attr('src') || obj.attr('href') ) {
-							image.src = obj.attr('src') || obj.attr('href');
-							image.title = obj.attr('title') || obj.attr('alt') || image.title;
-							image.name = obj.attr('name') || '';
+						if ( obj.prop('src') || obj.prop('href') ) {
+							image.src = obj.prop('src') || obj.prop('href');
+							image.title = obj.prop('title') || obj.prop('alt') || image.title;
+							image.name = obj.prop('name') || '';
 							image.color = obj.css('backgroundColor');
 							// Extract description from title
 							var s = image.title.indexOf(': ');
@@ -1196,7 +1196,7 @@
 			
 			// Image link
 			if ( this.download_link ) {
-				$('#lightbox-caption-title').preventDefault().lastclick(function(){window.open($(this).attr('href')); return false;});
+				$('#lightbox-caption-title').preventDefault().lastclick(function(){window.open($(this).prop('href')); return false;});
 			}
 			
 			// Assign close clicks
@@ -1228,7 +1228,7 @@
 			// Create the groups
 			$.each($('[rel*='+orig_rel+']'), function(index, obj){
 				// Get the group
-				var rel = $(obj).attr('rel');
+				var rel = $(obj).prop('rel');
 				// Are we really a group
 				if ( rel === orig_rel )
 				{	// We aren't
@@ -1609,7 +1609,7 @@
 				case 2:
 					
 					// Apply image changes
-					$('#lightbox-image').attr('src', image.src);
+					$('#lightbox-image').prop('src', image.src);
 					
 					// Set container border (Moved here for Konqueror fix - Credits to Blueyed)
 					if ( typeof this.padding === 'undefined' || this.padding === null || isNaN(this.padding) )
@@ -1669,7 +1669,7 @@
 					// Hide and set image info
 					var $title = $('#lightbox-caption-title').html(image.title || 'Untitled');
 					if ( this.download_link ) {
-						$title.attr('href', this.download_link ? image.src : '');
+						$title.prop('href', this.download_link ? image.src : '');
 					}
 					delete $title;
 					$('#lightbox-caption-seperator').html(image.description ? ': ' : '');
